@@ -5,7 +5,9 @@
   "scripts": {},
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "chart.js": "^2.2.1",
     "d3": "^4.2.2",
+    "jquery": "^3.1.0",
     "lodash": "^4.15.0",
     "moment": "^2.14.1",
     "sprintf-js": "^1.0.3",
