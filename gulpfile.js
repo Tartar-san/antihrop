@@ -10,7 +10,7 @@ var vueify = require('vueify');
 
 function compile(watch) {
   var bundler = watchify(
-      browserify('./antihrop/resources/js/app.es6.js', {debug: true})
+      browserify('./resources/js/app.es6.js', {debug: true})
           .transform(vueify)
           .transform(babel)
   );
@@ -22,7 +22,7 @@ function compile(watch) {
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest('./antihrop/static/js'));
+      .pipe(gulp.dest('./static/js'));
   }
 
   if (watch) {
@@ -43,13 +43,13 @@ gulp.task('build', function() { return compile(); });
 gulp.task('watch', function() { return watch(); });
 
 gulp.task('sass', function () {
-  return gulp.src('./antihrop/resources/sass/style.sass')
+  return gulp.src('./resources/sass/style.sass')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./antihrop/static/css/'));
+    .pipe(gulp.dest('./static/css/'));
 });
 
 gulp.task('sass:watch', function () {
-  gulp.watch('./antihrop/resources/sass/**/*.sass', ['sass']);
+  gulp.watch('./resources/sass/**/*.sass', ['sass']);
 });
 
 gulp.task('default', ['watch', 'sass:watch']);
