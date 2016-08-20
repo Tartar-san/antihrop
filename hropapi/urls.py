@@ -10,6 +10,7 @@ router.register(r'users', UserViewSet)
 router.register(r'hrops', HropViewSet)
 
 urlpatterns = [
+    url(r'^users/register', RegistrationsView.as_view()),
     url(r'^', include(router.urls)),
     # url(r'^profiles/(?P<user_id>[0-9]+)$', ),
 
