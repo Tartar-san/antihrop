@@ -23,7 +23,16 @@ class HropsView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
-        pass
+        serializer = HropSerializer(data=request.data)
+
+        if serializer.is_valid():
+
+            serializer.create(request.data)
+
+            return Response(serializer.data, status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class RegistrationsView(APIView):
     permission_classes = (permissions.AllowAny,)

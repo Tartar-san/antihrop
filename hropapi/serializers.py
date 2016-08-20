@@ -20,6 +20,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         user.save()
         return user
 
+
 class HropSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
 
