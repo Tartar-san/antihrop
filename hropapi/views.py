@@ -14,10 +14,16 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-class HropViewSet(viewsets.ModelViewSet):
-    queryset = Hrop.objects.all()
-    serializer_class = HropSerializer
+class HropsView(APIView):
+    def get(self, request):
 
+        queryset = Hrop.objects.filter(user=request.user)
+        serializer = HropSerializer(queryset)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        pass
 
 class RegistrationsView(APIView):
     permission_classes = (permissions.AllowAny,)
