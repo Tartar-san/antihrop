@@ -21,7 +21,7 @@ class HropsView(APIView):
         queryset = Hrop.objects.filter(user=request.user)
         serializer = HropSerializer(queryset, many=True)
 
-        fill_data.fill(7)
+        # fill_data.fill(31)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
