@@ -22,8 +22,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class HropSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
-
     class Meta:
         model = Hrop
-        fields = '__all__'
+        fields = ('time', 'period', 'response_time', 'intensity', 'track_name', 'volume_track')
+
+    def create(self, validated_data):
+        return Hrop.objects.create(**validated_data)
