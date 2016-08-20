@@ -22,8 +22,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class HropSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
+    # user = UserSerializer(read_only=True)
 
     class Meta:
         model = Hrop
         fields = '__all__'
+        extra_kwargs = {'user': {'write_only': True}}
+
