@@ -9,7 +9,6 @@ from rest_framework.views import APIView
 from rest_framework import permissions
 
 
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
