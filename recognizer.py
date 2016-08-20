@@ -40,7 +40,7 @@ def recognizeSnore(filename):
 	result = aT.fileClassification(filename, 'model/svmSM', "svm")
 	(m,i) = max((v,i) for i,v in enumerate(result[1]))
 
-	if result[2][i] == 'snore':
+	if result[1][0] > 0.96:
 		return True
 	return False
 
