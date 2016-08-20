@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'hropapi.apps.HropapiConfig'
+    'hropapi.apps.HropapiConfig',
+    'rest_framework.authtoken',
+
 ]
 
 MIDDLEWARE = [
@@ -142,7 +144,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     )
 }
-
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-)
+#
+# AUTHENTICATION_BACKENDS = (
+#     'rest_framework.authtoken.models.BasicToken',
+# )
