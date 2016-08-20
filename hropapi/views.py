@@ -27,7 +27,10 @@ class HropsView(APIView):
 
         if serializer.is_valid():
 
-            serializer.create(request.data)
+            data = request.data
+            data.update({"user":request.user})
+
+            serializer.create(data)
 
             return Response(serializer.data, status.HTTP_201_CREATED)
         else:
