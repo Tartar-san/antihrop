@@ -1,6 +1,5 @@
 import time
 import random
-from datetime import datetime
 from random_words import RandomWords
 from hropapi.models import *
 from django.utils import timezone

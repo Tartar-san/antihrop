@@ -25,13 +25,11 @@ class HropsView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
-        serializer = HropSerializer(data=request.data)
+        data = request.data
+        serializer = HropSerializer(data=data)
 
         if serializer.is_valid():
-
-            data = request.data
             data.update({"user": request.user})
-
             serializer.create(data)
 
             return Response(serializer.data, status.HTTP_201_CREATED)
