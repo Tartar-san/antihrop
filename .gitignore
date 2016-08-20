@@ -67,4 +67,4 @@ media/
 static/
 templates/
 /static/rest_framework/
-
+node_modules/
