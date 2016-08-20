@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.shortcuts import render
 
 urlpatterns = [
+    url(r'^$', view=lambda request: render(request, 'index.html')),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('hropapi.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
