@@ -84,7 +84,7 @@ def record_to_file(path, sample_width, data):
 
 
 def main():
-	jsonder = RESTClient("localhost", 8000, "/api/hraps")
+    jsonder = RESTClient("localhost", 8000, "/api/hraps")
     volume = 0
     snor_iteration = 0
     start_of_snor = 0
@@ -130,14 +130,14 @@ def main():
         snor = recognizeSnore("1.wav")
         
         if snor:
-			if snor_iteration == 0:
-				start_of_snor = datetime.now()
+            if snor_iteration == 0:
+                start_of_snor = datetime.now()
             print("TRUE")
             volume += 0.1
             snor_iteration += 1
             #play_music(volume, "file-0"+str(snor_iteration)+".wav")
         else:
-			if snor_iteration != 0:
+            if snor_iteration != 0:
                 data_dict = {}
                 end_of_snor = datetime.now()
                 data_dict["time"] = start_of_snor
