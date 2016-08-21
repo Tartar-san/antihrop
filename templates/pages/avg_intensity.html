@@ -1,0 +1,12 @@
+{% extends 'templates/graphpage.html' %}
+
+{% block graphpagetitle %}
+    Average intensity
+{% endblock %}
+
+{% block graphcontent %}
+    <canvas v-hropgraph="timeShift"
+            :modify-day-hrops-callback="avgIntensity"
+            :time-type="timeType"
+            class="hropgraph"></canvas>
+{% endblock %}

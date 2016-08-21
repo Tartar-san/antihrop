@@ -1,0 +1,12 @@
+{% extends 'templates/graphpage.html' %}
+
+{% block graphpagetitle %}
+    Hrops length
+{% endblock %}
+
+{% block graphcontent %}
+    <canvas v-hropgraph="timeShift"
+            :modify-day-hrops-callback="periodsPerDay"
+            :time-type="timeType"
+            class="hropgraph"></canvas>
+{% endblock %}

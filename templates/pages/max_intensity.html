@@ -1,0 +1,12 @@
+{% extends 'templates/graphpage.html' %}
+
+{% block graphpagetitle %}
+    Max intensity
+{% endblock %}
+
+{% block graphcontent %}
+    <canvas v-hropgraph="timeShift"
+            :modify-day-hrops-callback="maxIntensity"
+            :time-type="timeType"
+            class="hropgraph"></canvas>
+{% endblock %}

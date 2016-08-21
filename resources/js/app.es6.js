@@ -15,19 +15,31 @@ let app = new Vue({
     el: '#antihrop-app',
     data: {
         now: moment(),
-        weekShift: 0
+        timeShift: 0,
+        timeType: 0
     },
     methods: {
-        shiftWeek(isNext = true) {
-            this.weekShift += isNext ? 1 : -1;
+        setTimeType(type) {
+            this.timeType = type;
+        },
+        shiftTime(isNext = true) {
+            this.timeShift += isNext ? 1 : -1;
         },
         periodsPerDay(hropsPerDay) {
             return hropsPerDay
                 .map(hr => hr.period)
                 .reduce((p, c) => p + c, 0);
         },
-        intensity(hropsPerDay) {
+        maxIntensity(hropsPerDay) {
             return hropsPerDay.length ? Math.max.apply(Math, hropsPerDay.map(hr => hr.intensity)) : 0;
+        },
+        avgIntensity(hropsPerDay) {
+            return hropsPerDay.length
+                ? (hropsPerDay.map(ht => ht.intensity).reduce((i, carry) => (carry + i), 0) / hropsPerDay.length)
+                : 0;
+        },
+        counts(hropsPerDay) {
+            return hropsPerDay.length
         }
     }
 });

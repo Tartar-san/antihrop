@@ -1,0 +1,22 @@
+{% extends 'templates/base.html' %}
+
+{% block pagecontent %}
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">
+                <div class="btn-group pull-left" role="group">
+                  <button type="button" class="btn btn-default" @click="setTimeType(0)">Week</button>
+                  <button type="button" class="btn btn-default" @click="setTimeType(1)">Month</button>
+                </div>
+                {% block graphpagetitle %}
+                {% endblock %}
+            </h2>
+            <div class="clearfix">
+                <button class="btn btn-primary pull-left" @click="shiftTime(false)">Prev</button>
+                <button class="btn btn-primary pull-right" @click="shiftTime(true)">Next</button>
+            </div>
+            {% block graphcontent %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

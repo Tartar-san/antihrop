@@ -1,0 +1,12 @@
+{% extends 'templates/graphpage.html' %}
+
+{% block graphpagetitle %}
+    Counts
+{% endblock %}
+
+{% block graphcontent %}
+    <canvas v-hropgraph="timeShift"
+            :modify-day-hrops-callback="counts"
+            :time-type="timeType"
+            class="hropgraph"></canvas>
+{% endblock %}
