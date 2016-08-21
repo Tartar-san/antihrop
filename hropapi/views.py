@@ -1,4 +1,3 @@
-import fill_data
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -17,7 +16,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class HropsView(APIView):
     def get(self, request):
-        # fill_data.fill(31, request.user)
 
         queryset = Hrop.objects.filter(user=request.user)
         serializer = HropSerializer(queryset, many=True)
