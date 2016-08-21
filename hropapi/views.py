@@ -17,11 +17,11 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class HropsView(APIView):
     def get(self, request):
+        # fill_data.fill(31, request.user)
 
         queryset = Hrop.objects.filter(user=request.user)
         serializer = HropSerializer(queryset, many=True)
 
-        # fill_data.fill(31)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):

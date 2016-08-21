@@ -7,7 +7,7 @@ window.Chart = require('chart.js');
 import Vue from 'vue';
 Vue.use(require('vue-resource'));
 Vue.http.headers.common['Content-Type'] = 'application/json';
-Vue.http.headers.common['Authorization'] = 'Token 64a66708548aa75ef2f1bb842c839adf3404c5e9';
+// Vue.http.headers.common['Authorization'] = 'Token 64a66708548aa75ef2f1bb842c839adf3404c5e9';
 
 import hropgraph from './directives/hropgraph.js';
 

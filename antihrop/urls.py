@@ -16,20 +16,17 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf.urls.static import static
 
 urlpatterns = [
-  url(r'^$',
-      view=lambda request: render(request, 'pages/home.html')),
-  url(r'^hrops_length/$',
-      view=lambda request: render(request, 'pages/hrops_length.html')),
-  url(r'^max_intensity/$',
-      view=lambda request: render(request, 'pages/max_intensity.html')),
-  url(r'^avg_intensity/$',
-      view=lambda request: render(request, 'pages/avg_intensity.html')),
+  url(r'^$', view=lambda request: render(request, 'pages/home.html')),
+  url(r'^hrops_length/$', view=lambda request: render(request, 'pages/hrops_length.html') if request.user.is_authenticated() else redirect('/api-auth/login')),
+  url(r'^max_intensity/$', view=lambda request: render(request, 'pages/max_intensity.html')),
+  url(r'^avg_intensity/$', view=lambda request: render(request, 'pages/avg_intensity.html')),
   url(r'^counts/$', view=lambda request: render(request, 'pages/counts.html')),
   url(r'^admin/', admin.site.urls),
   url(r'^api/', include('hropapi.urls')),
-  url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+  url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+  url(r'^accounts/profile/$', lambda request: redirect('/hrops_length/'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

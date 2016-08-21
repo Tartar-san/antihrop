@@ -5,8 +5,7 @@ from hropapi.models import *
 from django.utils import timezone
 
 
-def fill(days, pk=1):
-    user = User.objects.get(pk=pk)
+def fill(days, user):
 
     for day in xrange(days):
         timestamp = time.time() - day * 86400
