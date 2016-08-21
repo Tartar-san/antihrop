@@ -141,11 +141,11 @@ def main():
                 data_dict = {}
                 end_of_snor = datetime.now()
                 data_dict["time"] = str(start_of_snor)
-                data_dict["period"] = (end_of_snor-start_of_snor).total_seconds()
-                data_dict["response_time"] = (end_of_snor-start_of_snor).total_seconds()-10
+                data_dict["period"] = int((end_of_snor-start_of_snor).total_seconds())
+                data_dict["response_time"] = int((end_of_snor-start_of_snor).total_seconds()-10)
                 data_dict["intensity"] = randint(30,90)
                 data_dict["track_name"] = "Edward Grieg - Morning"
-                data_dict["volume_track"] = volume * 100
+                data_dict["volume_track"] = int(volume * 100)
                 jsonder.send_data_in_POST(data_dict)
             volume = 0
             snor_iteration = 0
