@@ -77,11 +77,16 @@ export default {
         }
     },
     bind() {
+        this.isBind = true;
         bindAction.call(this);
     },
     update(value) {
         this.value = value;
-        bindAction.call(this, value, true);
+        if (!this.isBind) {
+            bindAction.call(this, value, true);
+        } else {
+            this.isBind = false;
+        }
     }
 };
 
