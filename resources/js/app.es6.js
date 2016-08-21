@@ -6,11 +6,8 @@ window.Chart = require('chart.js');
 
 import Vue from 'vue';
 Vue.use(require('vue-resource'));
-
-let token = localStorage.getItem('token');
-if (token) {
-    Vue.http.headers.common['Authorization'] = sprintf('Token %s', token);
-}
+Vue.http.headers.common['Content-Type'] = 'application/json';
+Vue.http.headers.common['Authorization'] = 'Token 64a66708548aa75ef2f1bb842c839adf3404c5e9';
 
 import hropgraph from './directives/hropgraph.js';
 
@@ -21,17 +18,9 @@ let app = new Vue({
     data: {
         now: moment(),
         timeShift: 0,
-        timeType: 0,
-        user: {login: '', password: ''}
+        timeType: 0
     },
     methods: {
-        login() {
-            this.$http.post('/api/token-auth/', {username: this.user.login, password: this.user.password}, {headers: {'Content-Type': 'application/json'}})
-                .then(({data: {token}}) => {
-                    localStorage.setItem('token', token);
-                    window.location = '/';
-                })
-        },
         setTimeType(type) {
             this.timeType = type;
         },

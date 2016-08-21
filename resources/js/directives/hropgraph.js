@@ -6,10 +6,7 @@ function bindAction(value = 0, isUpdate = false) {
             .startOf(timeTypeStartOf);
     this.el.style.opacity = 0;
 
-        this.vm.$http.get('/api/hrops', {headers: {
-                'Authorization': 'Token 64a66708548aa75ef2f1bb842c839adf3404c5e9',
-                'Content-Type': 'application/json'}
-            })
+        this.vm.$http.get('/api/hrops')
             .then(({data: hrops}) => {
                 let startTimeUnix = startTime.unix();
                 hrops = hrops
