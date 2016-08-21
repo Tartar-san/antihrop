@@ -84,7 +84,7 @@ def record_to_file(path, sample_width, data):
 
 
 def main():
-    jsonder = RESTClient("localhost", 8000, "/api/hraps")
+    jsonder = RESTClient("localhost", 8000, "/api/hrops")
     volume = 0
     snor_iteration = 0
     start_of_snor = 0
@@ -140,7 +140,7 @@ def main():
             if snor_iteration != 0:
                 data_dict = {}
                 end_of_snor = datetime.now()
-                data_dict["time"] = start_of_snor
+                data_dict["time"] = str(start_of_snor)
                 data_dict["period"] = (end_of_snor-start_of_snor).total_seconds()
                 data_dict["response"] = (end_of_snor-start_of_snor).total_seconds()-10
                 data_dict["intensity"] = randint(30,90)
