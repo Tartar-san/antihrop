@@ -20,7 +20,8 @@ from django.shortcuts import render
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^$', view=lambda request: render(request, 'index.html')),
+    url(r'^$', view=lambda request: render(request, 'pages/home.html')),
+    url(r'^login/$', view=lambda request: render(request, 'pages/login.html')),
     url(r'^hrops_length/$', view=lambda request: render(request, 'pages/hrops_length.html')),
     url(r'^max_intensity/$', view=lambda request: render(request, 'pages/max_intensity.html')),
     url(r'^avg_intensity/$', view=lambda request: render(request, 'pages/avg_intensity.html')),
